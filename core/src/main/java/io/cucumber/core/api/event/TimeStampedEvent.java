@@ -1,14 +1,16 @@
 package io.cucumber.core.api.event;
 
-abstract class TimeStampedEvent implements Event {
-    private final Long timeStamp;
+import java.time.Duration;
 
-    TimeStampedEvent(Long timeStamp) {
-        this.timeStamp = timeStamp;
+abstract class TimeStampedEvent implements Event {
+    private final Duration duration;
+
+    TimeStampedEvent(Duration duration) {
+        this.duration = duration;
     }
 
     @Override
-    public Long getTimeStamp() {
-        return timeStamp;
+    public Duration getDuration() {
+        return duration;
     }
 }

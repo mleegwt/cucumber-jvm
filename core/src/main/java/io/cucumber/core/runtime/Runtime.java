@@ -74,10 +74,10 @@ public final class Runtime {
     }
 
     public void run() {
-        bus.send(new TestRunStarted(bus.getTime()));
+        bus.send(new TestRunStarted(bus.getDuration()));
         final List<CucumberFeature> features = featureSupplier.get();
         for (CucumberFeature feature : features) {
-            bus.send(new TestSourceRead(bus.getTime(), feature.getUri().toString(), feature.getSource()));
+            bus.send(new TestSourceRead(bus.getDuration(), feature.getUri().toString(), feature.getSource()));
         }
         final StepDefinitionReporter stepDefinitionReporter = plugins.stepDefinitionReporter();
         runnerSupplier.get().reportStepDefinitions(stepDefinitionReporter);
@@ -102,7 +102,7 @@ public final class Runtime {
             throw new CucumberException(e);
         }
 
-        bus.send(new TestRunFinished(bus.getTime()));
+        bus.send(new TestRunFinished(bus.getDuration()));
     }
 
     public byte exitStatus() {

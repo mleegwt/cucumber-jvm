@@ -1,5 +1,7 @@
 package io.cucumber.core.runner;
 
+import java.time.Duration;
+
 import io.cucumber.core.event.AbstractEventBus;
 
 public final class TimeServiceEventBus extends AbstractEventBus {
@@ -10,7 +12,7 @@ public final class TimeServiceEventBus extends AbstractEventBus {
     }
 
     @Override
-    public Long getTime() {
+    public Duration getDuration() {
         return stopWatch.time();
     }
 }

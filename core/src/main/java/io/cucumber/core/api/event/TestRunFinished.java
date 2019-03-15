@@ -1,8 +1,10 @@
 package io.cucumber.core.api.event;
 
+import java.time.Duration;
+
 public final class TestRunFinished extends TimeStampedEvent {
 
-    public TestRunFinished(Long timeStamp) {
-        super(timeStamp);
+    public TestRunFinished(Duration duration) {
+        super(duration);
     }
 }

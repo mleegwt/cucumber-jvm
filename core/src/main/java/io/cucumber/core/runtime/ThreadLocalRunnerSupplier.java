@@ -1,5 +1,7 @@
 package io.cucumber.core.runtime;
 
+import java.time.Duration;
+
 import io.cucumber.core.api.event.Event;
 import io.cucumber.core.api.event.EventHandler;
 import io.cucumber.core.backend.BackendSupplier;
@@ -54,8 +56,8 @@ public final class ThreadLocalRunnerSupplier implements RunnerSupplier {
         }
 
         @Override
-        public Long getTime() {
-            return parent.getTime();
+        public Duration getDuration() {
+            return parent.getDuration();
         }
 
         @Override
@@ -82,8 +84,8 @@ public final class ThreadLocalRunnerSupplier implements RunnerSupplier {
         }
 
         @Override
-        public synchronized Long getTime() {
-            return delegate.getTime();
+        public synchronized Duration getDuration() {
+            return delegate.getDuration();
         }
 
         @Override

@@ -1,9 +1,12 @@
 package io.cucumber.core.api.event;
 
+import java.time.Duration;
 import java.util.Comparator;
 
+/**
+ * An event is an something that happens during test case execution.
+ */
 public interface Event {
-
     /**
      * When pickles are executed in parallel events can be
      * produced with a partial ordering.
@@ -30,6 +33,17 @@ public interface Event {
      */
     Comparator<Event> CANONICAL_ORDER = new CanonicalEventOrder();
 
-    Long getTimeStamp();
-
+    /**
+     * @deprecated Replaced by Duration based variant.
+     * @return The timestamp in nanos since start.
+     */
+    @Deprecated
+    default Long getTimeStamp() {
+        return getDuration() == null ? null : getDuration().toNanos(); 
+    }
+    
+    /**
+     * @return The event duration.
+     */
+    Duration getDuration();
 }

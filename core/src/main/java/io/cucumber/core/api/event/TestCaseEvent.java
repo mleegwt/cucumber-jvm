@@ -1,11 +1,13 @@
 package io.cucumber.core.api.event;
 
+import java.time.Duration;
+
 public abstract class TestCaseEvent extends TimeStampedEvent {
 
     final TestCase testCase;
 
-    TestCaseEvent(Long timeStamp, TestCase testCase) {
-        super(timeStamp);
+    TestCaseEvent(Duration duration, TestCase testCase) {
+        super(duration);
         this.testCase = testCase;
     }
 
